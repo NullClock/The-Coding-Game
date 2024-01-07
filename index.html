@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<!-- Basic Meta -->
+
+	<title>Home | The Coding Game</title>
+	<meta name="title" content="The Coding Game" />
+	<meta name="description" content="Learn to code using this fun and silly game! Play it twice a day and within a few weeks, you'll already be mastering JavaScript." />
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://game.xcore.tk" />
+	<meta property="og:title" content="The Coding Game" />
+	<meta property="og:description" content="Learn to code using this fun and silly game! Play it twice a day and within a few weeks, you'll already be mastering JavaScript." />
+	<meta property="og:image" content="https://game.xcore.tk/TheCodingGame.png" />
+	
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="https://game.xcore.tk" />
+	<meta property="twitter:title" content="The Coding Game" />
+	<meta property="twitter:description" content="Learn to code using this fun and silly game! Play it twice a day and within a few weeks, you'll already be mastering JavaScript." />
+	<meta property="twitter:image" content="https://game.xcore.tk/TheCodingGame.png" />
+	<!-- Other Stuff -->
+	<link href="style.css" rel="stylesheet" />
+</html>
+
+<body>
+  <div class='navbar'>
+    <div class='logo'>
+      <span 
+        class='logo firstInNav'
+        id='piece1'>The Coding Game</span>
+      <span
+        class='logo'
+        id='piece2'>&lt;/></span>
+      <span
+        class='logo'
+        id='piece3'>| </span>
+      <a 
+        href="javascript:void(0)"
+        onclick="c()">
+        Credits</a>
+      <span id="dv">/</span>
+      <a 
+        href="javascript:void(0)"
+        onclick="e()">
+        Home</a>
+    </div>
+  </div>
+  <div class="content">
+    <div class="levelCard">
+      <h2
+        class="logo"
+        id="piece1">
+        The Coding Game
+      </h2>
+      <h2
+        class="logo"
+        id="piece2">
+        &lt;/>
+      </h2><br>
+      The Coding Game is a private preview. Please do not share this URL.<br><br>
+      <a href="level1.html?page=1" id="start"><button>START</button></a><br>
+			<span>Your level: <code id="lvl"></code></span>
+			<div id="scriptOutput" hidden>
+				This is here to prevent an error from being console.log-ed. This is hidden.
+			</div>
+    </div>
+  </div>
+  <div class="floatingAlert">
+    PRIVATE PREVIEW
+  </div>
+  <script src='script.js'></script>
+</body>

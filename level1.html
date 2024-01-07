@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<!-- Basic Meta -->
+
+	<title>Level 1 | The Coding Game</title>
+	<meta name="title" content="The Coding Game" />
+	<meta name="description" content="Learn to code using this fun and silly game! Play it twice a day and within a few weeks, you'll already be mastering JavaScript." />
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://game.xcore.tk" />
+	<meta property="og:title" content="The Coding Game" />
+	<meta property="og:description" content="Learn to code using this fun and silly game! Play it twice a day and within a few weeks, you'll already be mastering JavaScript." />
+	<meta property="og:image" content="https://game.xcore.tk/TheCodingGame.png" />
+	
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="https://game.xcore.tk" />
+	<meta property="twitter:title" content="The Coding Game" />
+	<meta property="twitter:description" content="Learn to code using this fun and silly game! Play it twice a day and within a few weeks, you'll already be mastering JavaScript." />
+	<meta property="twitter:image" content="https://game.xcore.tk/TheCodingGame.png" />
+	<!-- Other Stuff -->
+	<link href="style.css" rel="stylesheet" />
+</html>
+
+<body>
+  <div class='navbar'>
+    <div class='logo'>
+      <span 
+        class='logo firstInNav'
+        id='piece1'>The Coding Game</span>
+      <span
+        class='logo'
+        id='piece2'>&lt;/></span>
+      <span
+        class='logo'
+        id='piece3'>| </span>
+      <a 
+        href="javascript:void(0)"
+        onclick="c()">
+        Credits</a>
+      <span id="dv">/</span>
+      <a 
+        href="javascript:void(0)"
+        onclick="e()">
+        Home</a>
+    </div>
+  </div>
+  <div class="content">
+    <div class="levelCard">
+      <h2
+        class="logo"
+        id="piece1">
+        The Coding Game
+      </h2>
+      <h2
+        class="logo"
+        id="piece2">
+        &lt;/>
+      </h2><h2> - Level 1</h2><br><br>
+			<span id="pageText">Hello! Welcome to Level 1! In this level, you will not be coding, but you will be taught basic coding terms and concepts.</span><br><br>
+			<next-step></next-step>
+      <div id="scriptOutput" hidden>
+			
+			</div>
+    </div>
+  </div>
+  <div class="floatingAlert">
+    PRIVATE PREVIEW
+  </div>
+  <script src='script.js'></script>
+	<script>
+		window.content = document.querySelector(".content");
+		const pt = document.querySelector("#pageText");
+		var opt = document.querySelector("#scriptOutput");
+		var parser = new DOMParser();
+		
+		let output = parser.parseFromString(
+			opt.innerHTML,
+			"text/html"
+		).getElementsByTagName("body")[0];
+
+		const q = new URLSearchParams(window.location.search);
+
+		function setText(element, text) {
+			element.innerText = text;
+			if (element.innerText == text) {
+				return true;
+			} else {
+				throw new Error("Whoops, it seems that there was an error.. (not in your code, in your computer, or in our code.)");
+			}
+		
+			__updateScreen();
+		}
+		
+		function getElement(id) {
+			const elem = output.getElementById(id);
+		  if (elem) return elem;
+			else throw new Error("Whoops, it looks like you made a mistake! That element doesn't exist!");
+		}
+		
+		function createText(text, id) {
+			const elem = document.createElement("span");
+			elem.innerText = text;
+			elem.style.fontFamily = '\"Poppins\", sans-serif';
+			elem.style.color = "black";
+			output.append(elem);
+			__updateScreen();
+		
+			return elem;
+		}
+		
+		function __updateScreen() {
+			opt.innerHTML = output.innerHTML;
+		}
+
+		function __updateSearchParams() {
+			window.location.search = q.toString();
+		}
+
+		class NextButton extends HTMLElement {
+			constructor() {
+				super();
+			}
+		
+			connectedCallback() {
+				this.innerHTML = `
+				<button>
+					<img src="next-page.svg" /> Next Step
+				</button>
+				`;
+				this.className = "nextBtn";
+
+				this.onclick = () => {	
+					q.set("page", (parseInt(q.get("page"))+1) || 1);
+					__updateSearchParams();
+				}
+			}
+		}
+		
+		customElements.define("next-step", NextButton);
+
+		if (q.get("page") == 2) {
+			pt.innerHTML = `
+With that being said, or written .. let's begin with: Elements!<br>
+Elements are visual components on your screen. Elements make up the web as you know it!<br>
+Elements can be text, images, videos, portals into other websites, and more!<br>
+Elements are the very core of the internet.
+`;
+		} else if (q.get("page") == 3) {
+			pt.innerHTML = `
+Now, off of elements, onto functions. Functions are re-usable lines of code.<br>
+I can set a function, and then, later on in my code, I can call it to run it's code.<br>
+And functions <b>don't have a use limit!</b> Meaning.. that's right! They're re-usable.<br>
+To call a function, you just have to do <code>function-name-here()</code>.<br>
+You will learn how to create them in later levels.
+`;
+		} else if (q.get("page") == 4) {
+			pt.innerHTML = `
+That's all for today lesso- oops, I meant level!
+This was not really a level, but it was an introduction to two<br>basic concepts that will be widely used throughout the game.
+
+Thank you for trying The Coding Game, I hope you enjoy later levels!
+`;
+			let t = document.querySelector(".nextBtn");
+			t.style.backgroundColor = "#48e827";
+			t.style.color = "white";
+			t.style.padding = "3px";
+			t.style.borderRadius = "5px";
+			t.innerHTML = "Next Level";
+			t.onclick = () => {
+				localStorage.setItem("level", "2");
+				e();
+			}
+		}
+	</script>
+</body>
